@@ -25,8 +25,8 @@ process.on("uncaughtException", (err) => {
 const VERSION = "0.1.0";
 
 const program = new Command()
-  .name("lumora-daemon")
-  .description("Lumora Daemon — local agent runtime for remote AI task execution")
+  .name("lumora-aether")
+  .description("Lumora Aether — local agent runtime for remote AI task execution")
   .version(VERSION)
   .option("--backend-url <url>", "HTTP URL of the backend task control plane", process.env.AGENT_DASHBOARD_BACKEND_URL)
   .option("--api-key <key>", "Machine API key for authentication", process.env.AGENT_DASHBOARD_DAEMON_API_KEY)

@@ -1,10 +1,10 @@
 {
-  "name": "lumora-daemon",
+  "name": "lumora-aether",
   "version": "1.0.0",
-  "description": "Lumora Daemon — local agent runtime that connects your machine to the Lumora dashboard for remote AI task execution.",
+  "description": "Lumora Aether — local agent runtime that connects your machine to the Lumora dashboard for remote AI task execution.",
   "type": "module",
   "bin": {
-    "lumora-daemon": "dist/bin/cli.js"
+    "lumora-aether": "dist/bin/cli.js"
   },
   "files": [
     "dist"
@@ -30,11 +30,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lumora/lumora-daemon"
+    "url": "https://github.com/lumora/lumora-aether"
   },
   "keywords": [
     "lumora",
-    "daemon",
+    "aether",
     "agent",
     "ai",
     "runtime",

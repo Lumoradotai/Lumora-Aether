@@ -1,8 +1,8 @@
-# Lumora Daemon
+# Lumora Aether
 
-Local agent runtime that connects your machine to the [Lumora](https://lumorai.io) dashboard for remote AI task execution.
+Local agent runtime that connects your machine to the [Lumora](https://github.com/lumora) dashboard for remote AI task execution.
 
-The daemon runs on your computer, polls the Lumora backend for tasks, executes them using locally installed AI agents (Claude Code, OpenClaw, Codex, or the onchainos CLI), and reports results back.
+The Aether runs on your computer, polls the Lumora backend for tasks, executes them using locally installed AI agents (Claude Code, OpenClaw, Codex, or the onchainos CLI), and reports results back.
 
 ## Architecture
 
@@ -15,7 +15,7 @@ Lumora Backend (Fastify + Postgres)
        │  HTTP poll / claim / heartbeat / submit-result
        │
  ┌─────┴─────┐
- │   Daemon   │  ◄── this repo
+ │   Aether   │  ◄── this repo
  └─────┬─────┘
        │
        ▼
@@ -26,18 +26,18 @@ Lumora Backend (Fastify + Postgres)
    └── onchainos CLI
 ```
 
-The daemon and the dashboard never communicate directly — all coordination flows through the backend via HTTP.
+The Aether and the dashboard never communicate directly — all coordination flows through the backend via HTTP.
 
 ## Installation
 
 ```bash
-npm install -g lumora-daemon
+npm install -g lumora-aether
 ```
 
 Or run directly with npx:
 
 ```bash
-npx lumora-daemon --backend-url <URL> --api-key <KEY>
+npx lumora-aether --backend-url <URL> --api-key <KEY>
 ```
 
 ## Quick Start
@@ -47,13 +47,13 @@ npx lumora-daemon --backend-url <URL> --api-key <KEY>
 3. Start the daemon:
 
 ```bash
-lumora-daemon \
+lumora-aether \
   --backend-url https://your-backend.example.com \
   --api-key sk_machine_... \
   --name my-laptop
 ```
 
-The daemon registers with the backend, reports available runtimes, and begins polling for tasks.
+The Aether registers with the backend, reports available runtimes, and begins polling for tasks.
 
 ## Supported Agent Types
 
@@ -64,16 +64,16 @@ The daemon registers with the backend, reports available runtimes, and begins po
 | **Codex** (`codex`) | `codex` | OpenAI's coding agent |
 | **onchainos CLI** (`cli`) | `onchainos` | Direct CLI execution (no AI, no tokens) for deterministic data commands |
 
-The daemon auto-detects which runtimes are installed and only advertises capabilities for available ones. If no runtimes are found, it starts anyway and waits — you can install runtimes later and the dashboard can trigger onchainos installation remotely.
+The Aether auto-detects which runtimes are installed and only advertises capabilities for available ones. If no runtimes are found, it starts anyway and waits — you can install runtimes later and the dashboard can trigger onchainos installation remotely.
 
 ## Task Lifecycle
 
 1. **User sends a command** via the dashboard
 2. **Backend creates a task** (status: `queued`)
-3. **Daemon polls** and discovers the task
-4. **Daemon claims** the task (status: `claimed`)
-5. **Daemon executes** using the appropriate adapter, sending heartbeats during execution
-6. **Daemon submits the result** back to the backend (with retry on failure)
+3. **Aether polls** and discovers the task
+4. **Aether claims** the task (status: `claimed`)
+5. **Aether executes** using the appropriate adapter, sending heartbeats during execution
+6. **Aether submits the result** back to the backend (with retry on failure)
 7. **Dashboard displays the result** to the user
 
 ## Project Structure
