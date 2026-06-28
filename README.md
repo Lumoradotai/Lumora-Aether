@@ -1,6 +1,6 @@
 # Lumora Daemon
 
-Local agent runtime that connects your machine to the [Lumora](https://github.com/lumora) dashboard for remote AI task execution.
+Local agent runtime that connects your machine to the [Lumora](https://lumorai.io) dashboard for remote AI task execution.
 
 The daemon runs on your computer, polls the Lumora backend for tasks, executes them using locally installed AI agents (Claude Code, OpenClaw, Codex, or the onchainos CLI), and reports results back.
 
